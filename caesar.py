@@ -38,9 +38,16 @@ def encryption (message, key):
     ret = ""
     for char in message:
         """
-        rotation testing
+        Checks if is a character
         """
-        ret += chr((ord(char) - ord('a') + int(key) % 26) + ord('a'))
+        if not char.isalpha():
+            continue
+        """
+        The magic
+        rotates the character by the key within the set of
+        the ASCII table of characters
+        """
+        ret += chr(((ord(char) - ord('a') + int(key)) % 26) + ord('a'))
     print ret
     exit()
 """
@@ -49,12 +56,17 @@ Decryption method
 def decryption (message,key):
     ret = ""
     for char in message:
-        var = (ord(char) - int(key)) % 26
-        if var < 33:
-            var += 33
-        if var < 0:
-            var += 126
-        ret += chr(var)
+        """
+        Checks if is a character
+        """
+        if not char.isalpha():
+            continue
+        """
+        The magic
+        rotates the character by the key within the set of
+        the ASCII table of characters
+        """
+        ret += chr(((ord(char) - ord('a') - int(key)) % 26) + ord('a'))
     print ret
     exit()
 """
